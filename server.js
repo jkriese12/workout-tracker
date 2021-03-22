@@ -1,3 +1,4 @@
+// Dependencies
 const express = require("express");
 const mongoose = require("mongoose");
 const logger = require("morgan");
@@ -17,7 +18,7 @@ mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/workout", {
   useFindAndModify: false,
 });
 
-// routes
+// Route files
 require("./routes/html-routes")(app);
 require("./routes/api-routes")(app);
 

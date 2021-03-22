@@ -11,7 +11,7 @@ module.exports = function (app) {
         res.json(err);
       });
   });
-  // Get workouts for dashboard using the virtual column
+  // Get workouts for dashboard using the virtual column/ adding up duration of time
   app.get("/api/workouts/range", (req, res) => {
     db.Workout.aggregate([
       {
@@ -42,7 +42,7 @@ module.exports = function (app) {
         res.json(err);
       });
   });
-  //
+  // Update current workout
   app.put("/api/workouts/:id", function ({ body, params }, res) {
     db.Workout.findByIdAndUpdate(params.id, { $push: { exercises: body } }, { new: true })
       .then((data) => {
